@@ -1,26 +1,27 @@
-# Studiova - Free Bootstrap Business Template
-#### Preview
+# Electro - Free Bootstrap 5 eCommerce Template 
 
- - [Demo](https://themewagon.github.io/Studiova/)
+- [Demo](https://themewagon.github.io/iStudio/)
 
 #### Download
- - [Download from ThemeWagon]()
+
+- [Download from ThemeWagon](https://themewagon.com/themes/istudio/)
 
 ## Getting Started
 
 Clone Repository
+
 ```
-git clone https://github.com/themewagon/Studiova.git
+https://github.com/themewagon/iStudio.git
 ```
 
-## Author 
+## Author
+
 ```
-Design and code is completely written by WrapPixel design and development team.  
+The template is developed by Team HTML Codex.
 ```
 
 ## License
 
- - Design and Code is Copyright &copy; [WrapPixel](https://www.wrappixel.com/)
- - Licensed cover under [MIT] 
- - Distributed by [ThemeWagon](https://themewagon.com)
-
+- Design and Code is Copyright &copy; [HTML Codex](https://htmlcodex.com/).
+- Licensed cover under [MIT]
+- Distributed by [ThemeWagon](https://themewagon.com)
