@@ -1160,6 +1160,8 @@ section,
   flex: 1;
   max-width: 50%;
   text-align: center;
+  
+  
 }
 
 .two-images img {
@@ -1180,6 +1182,8 @@ section,
     max-width: 100%;
   }
 }
+
+
 /* Form Wrapper */
 .custom-register-form {
   background: #fff;
