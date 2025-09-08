@@ -1205,6 +1205,7 @@ section,
 
 /* Submit Button */
 .custom-register-form .btn-register {
+  margin-top: 10%;
   background: linear-gradient(135deg, #FFD15C, #FFB400);;
   color: black;
   font-size: 1.2rem;
@@ -1255,4 +1256,34 @@ section,
   font-size: 40px;
   color: #FFD15C;
   margin-bottom: 10px;
+}
+.icon-box i {
+  font-size: 32px;
+  font-weight: bold;
+  display: block;
+  color: #FFD15C; /* لون البراند */
+  margin-bottom: 10px;
+}
+.icon-box h3 a {
+  color: #31353d;
+  font-size: 18px;
+  text-decoration: none;
+}
+.headline {
+  font-size: 3rem; /* حجم أكبر */
+  font-weight: 700; /* خط عريض */
+  text-align: center; /* في النص */
+  color: #31353d; /* لون أساسي غامق */
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.headline::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(135deg, #FFD15C, #FFB400);
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
 }

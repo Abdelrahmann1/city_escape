@@ -28,6 +28,8 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@srexi/purecounterjs/dist/purecounter_vanilla.js"></script>
+
 
 </head>
 
@@ -46,10 +48,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="#hero" class="active">Home<br></a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#team">Team</a></li>
+          
           <li><a href="#contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -76,41 +75,48 @@
               <span> 24 - 27 </span>
               September <span>2025.</span>
             </h2>
-            <p>EGYPT'S LARGEST REAL ESTATE EXHIBITION</p>
+
+            <p class="">EGYPT'S LARGEST REAL ESTATE EXHIBITION</p>
+            <br>
           </div>
+          <br>
+          <br>
           <div class="">
 
-            <a href="#register" class="btn-register">REGISTER NOW</a>
+            <a href="#register" class="btn-register">REGISTER NOW <i class="bi bi-person-check"></i></a>
           </div>
         </div>
         <div class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
           <p class="text-center">Annual statistics
           </p>
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="300">
-
-            <div class="icon-box">
-              <i>14th</i>
-              <h3><a href="">
-                  Edition</a></h3>
+            <div class="icon-box text-center">
+              <i class="purecounter" data-purecounter-start="0" data-purecounter-end="14"
+                data-purecounter-duration="2"></i>
+              <h3><a href="">Edition</a></h3>
             </div>
           </div>
+
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon-box">
-              <i>40,000
-              </i>
+            <div class="icon-box text-center">
+              <i class="purecounter" data-purecounter-start="0" data-purecounter-end="40000"
+                data-purecounter-duration="3"></i>
               <h3><a href="">Visitors</a></h3>
             </div>
           </div>
+
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon-box">
-              <i>80+</i>
+            <div class="icon-box text-center">
+              <i class="purecounter" data-purecounter-start="0" data-purecounter-end="80"
+                data-purecounter-duration="2"></i>
               <h3><a href="">Developers</a></h3>
             </div>
           </div>
+
           <div class="col-xl-2 col-md-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon-box">
-              <i>1,000+
-              </i>
+            <div class="icon-box text-center">
+              <i class="purecounter" data-purecounter-start="0" data-purecounter-end="1000"
+                data-purecounter-duration="3"></i>
               <h3><a href="">Projects</a></h3>
             </div>
           </div>
@@ -128,10 +134,13 @@
 
 
     <!-- Section with Text and Two Images -->
+
     <section class="two-images-section">
+
       <div class="section-text">
-        <h2>Held under the patronage of
-        </h2>
+        <h3 class="headline">Held under the patronage of</h3>
+
+       
       </div>
 
       <div class="two-images">
@@ -144,43 +153,6 @@
       </div>
     </section>
 
-
-
-    <!-- About Section -->
-    <!-- <section id="about" class="about section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-          <div class="col-lg-6 order-1 order-lg-2">
-            <img src="assets/img/Egypt-t2.jpg" class="img-fluid" alt="Cityscape Egypt">
-          </div>
-          <div class="col-lg-6 order-2 order-lg-1 content">
-            <h3>Why Cityscape Egypt?</h3>
-            <p class="fst-italic">
-              Exclusive access to Egypt’s most prestigious real estate opportunities with unmatched offers from leading
-              developers.
-            </p>
-            <ul>
-              <li><i class="bi bi-star-fill text-warning"></i> <span>Exclusive offers from developers</span></li>
-              <li><i class="bi bi-star-fill text-warning"></i> <span>Discover opportunities in Egypt's growing real
-                  estate market</span></li>
-              <li><i class="bi bi-star-fill text-warning"></i> <span>Network with industry experts, developers, and
-                  investors</span></li>
-              <li><i class="bi bi-star-fill text-warning"></i> <span>Stay ahead of trends and innovations in real
-                  estate</span></li>
-            </ul>
-            <p>
-              Register now and be part of Egypt’s premier real estate event, where growth, innovation, and opportunity
-              come together.
-            </p>
-            <a href="#register" class="btn-register">REGISTER NOW</a>
-          </div>
-        </div>
-
-      </div>
-
-    </section>/About Section -->
     <!-- Contact Section -->
     <section id="contact" class="contact section">
 
@@ -401,11 +373,7 @@
             <a href="index.html" class="logo d-flex align-items-center">
               <span class="sitename">CITYSCAPE.</span>
             </a>
-            <div class="footer-contact pt-3">
-              <p class="mt-3"><strong>Address:</strong> <span>Egypt International Exhibition Center</span></p>
-              <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-
-            </div>
+           
             <div class="social-links d-flex mt-4">
               <a href=""><i class="bi bi-facebook"></i></a>
               <p class="mt-3">facebook</p>
@@ -443,15 +411,8 @@
           </div>
 
           <div class="col-lg-4 col-md-12 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-            <form action="forms/newsletter.php" method="post" class="php-email-form">
-              <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe">
-              </div>
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-            </form>
+            <img src="assets/img/logo.png" style="width:60; height: 30;" alt="">
+           
           </div>
 
         </div>
