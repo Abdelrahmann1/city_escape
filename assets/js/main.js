@@ -18,6 +18,113 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }, 5000); // 5000ms = 5 seconds
 });
+
+
+
+async function handleSubmit(e, sheet) {
+  e.preventDefault();
+  const form = e.target; // The form element
+  const name = form.name.value.trim(); // Assuming your input has name="name"
+  const phone = form.phone.value.trim(); // Assuming your input has name="phone"
+  if (form.project) {
+      const project = form.project.value.trim(); // Assuming your input has name="phone"
+      if (project != "none") {
+          sheet = project;
+      }else{
+          console.log("none");
+          
+      }
+  }else{
+      console.log("errorall");
+      
+  }
+  // // Validate inputs
+  if (!name || !phone) {
+    showAlert("الرجاء إدخال الاسم ورقم الهاتف.", "warning");
+    return;
+  }
+  console.log(name, phone,sheet);
+  
+  // Show progress bar
+  const progressContainer = document.getElementById("preloader");
+  progressContainer.classList.remove("d-none");
+
+  try {
+    const response = await fetch('../../submit-sheet.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        name: name,
+        phone: phone,
+        compound: sheet
+      })
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      name.value = "";
+      phone.value = "";
+        window.location.href = 'thank_you.html';
+    preloader.classList.add('hidden');
+
+    } else {
+      throw new Error(result.error || "Submission failed");
+        preloader.classList.add('hidden');
+
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    preloader.classList.add('hidden');
+    showAlert("حدث خطأ، برجاء المحاولة مرة أخرى.", "danger");
+  } finally {
+    progressContainer.classList.add("d-none");
+    preloader.classList.add('hidden');
+  }
+}
+function showAlert(message, type) {
+  const alertContainer = document.getElementById("alertContainer");
+
+  // Clear any existing alerts
+  while (alertContainer.firstChild) {
+    alertContainer.firstChild.remove();
+  }
+
+  if (!message || !type) return;
+
+  const alertDiv = document.createElement("div");
+  alertDiv.className = `alert alert-${type} alert-dismissible fade`;
+  alertDiv.role = "alert";
+  alertDiv.innerHTML = `
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    ${message}
+  `;
+
+  alertContainer.appendChild(alertDiv);
+
+  // Trigger reflow to enable transition
+  void alertDiv.offsetWidth;
+
+  // Trigger fade-in
+  alertDiv.classList.add("show");
+
+  // Auto-close after 10 seconds
+  const AUTO_CLOSE_DELAY = 10000;
+  // This runs AFTER the fade-out animation completes
+  if (type === "success") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  setTimeout(() => {
+    const bsAlert = bootstrap.Alert.getOrCreateInstance(alertDiv);
+    bsAlert.close(); // Starts fade-out
+  }, AUTO_CLOSE_DELAY);
+
+  // ✅ Listen for when Bootstrap finishes removing the alert
+
+}
+
+
 (function() {
   "use strict";
 
@@ -78,9 +185,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const preloader = document.querySelector('#preloader');
   if (preloader) {
     window.addEventListener('load', () => {
-      preloader.remove();
+      preloader.classList.add('d-none');
     });
   }
+}
 
   /**
    * Scroll top button
@@ -145,35 +253,35 @@ document.addEventListener('DOMContentLoaded', function () {
   /**
    * Init isotope layout and filters
    */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
+  // document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
+  //   let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
+  //   let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
+  //   let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
 
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
-    });
+  //   let initIsotope;
+  //   imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
+  //     initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
+  //       itemSelector: '.isotope-item',
+  //       layoutMode: layout,
+  //       filter: filter,
+  //       sortBy: sort
+  //     });
+  //   });
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
+  //   isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
+  //     filters.addEventListener('click', function() {
+  //       isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
+  //       this.classList.add('filter-active');
+  //       initIsotope.arrange({
+  //         filter: this.getAttribute('data-filter')
+  //       });
+  //       if (typeof aosInit === 'function') {
+  //         aosInit();
+  //       }
+  //     }, false);
+  //   });
 
-  });
+  // });
 
   /**
    * Initiate Pure Counter
