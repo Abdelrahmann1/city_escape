@@ -5,7 +5,19 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
+document.addEventListener('DOMContentLoaded', function () {
+  setTimeout(function () {
+    var modalElement = document.getElementById('staticBackdrop');
+    var myModal = bootstrap.Modal.getInstance(modalElement) || new bootstrap.Modal(modalElement);
 
+    // Check if modal is already shown
+    if (!modalElement.classList.contains('show')) {
+      myModal.show();
+    } else {
+      console.log('Modal is already open, skipping show().');
+    }
+  }, 5000); // 5000ms = 5 seconds
+});
 (function() {
   "use strict";
 

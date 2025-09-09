@@ -83,7 +83,7 @@
           <br>
           <div class="">
 
-            <a href="#register" class="btn-register">REGISTER NOW <i class="bi bi-person-check"></i></a>
+            <a href="#register" class="btn-register " data-bs-toggle="modal" data-bs-target="#staticBackdrop">REGISTER NOW <i class="bi bi-person-check"></i></a>
           </div>
         </div>
         <div class="row gy-4 mt-5 justify-content-center" data-aos="fade-up" data-aos-delay="200">
@@ -362,7 +362,6 @@
 
 
   </main>
-
   <footer id="footer" class="footer dark-background">
 
     <div class="footer-top">
@@ -427,7 +426,56 @@
     </div>
 
   </footer>
+  <div class="modal modal-lg	 fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog-centered modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+         
+        <!-- <div class="row gy-4"> -->
 
+
+
+          <div class="col-lg-20">
+            <form action="forms/contact.php" method="post" class="custom-register-form" data-aos="fade-up"
+              data-aos-delay="200">
+
+              <!-- Form Title -->
+              <h3 class="form-title d-flex justify-content-between">Visitor Registration 
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+          </h3>
+              <p style="text-align: center;">
+                Register now and be part of Egypt’s premier real estate event, where growth, innovation, and opportunity
+                come together.
+              </p>
+
+              <div class="row gy-4">
+                <!-- Name Field -->
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="Email" required>
+                </div>
+
+                <!-- Phone Field -->
+                <div class="col-md-6">
+                  <input type="tel" name="phone" class="form-control" placeholder=" Phone Number" required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-md-12 text-center">
+                  <button type="submit" class="btn-register">
+                    <i class="bi bi-person-check"></i> REGISTER NOW
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+        <!-- </div> -->
+        </div>
+        
+      </div>
+    </div>
+  </div>
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>

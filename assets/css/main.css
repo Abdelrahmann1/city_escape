@@ -203,7 +203,9 @@ h6 {
 .index-page .header {
   --background-color: rgba(0, 0, 0, 0);
 }
-
+.index-page{
+  padding: 0 !important;
+}
 /* Index Page Header on Scroll
 ------------------------------*/
 .index-page.scrolled .header {
@@ -876,7 +878,10 @@ section,
 .hero .icon-box:hover h3 a {
   color: var(--accent-color);
 }
-
+.modal-body{
+  background-color: transparent !important;
+  padding: 0 !important;
+}
 @media (max-width: 768px) {
   .hero h2 {
     font-size: 32px;
@@ -885,6 +890,11 @@ section,
   .hero p {
     font-size: 18px;
   }
+  .two-images-section,.footer-newsletter {
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;}
 }
 
 /*--------------------------------------------------------------
