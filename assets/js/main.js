@@ -24,27 +24,36 @@ document.addEventListener('DOMContentLoaded', function () {
 async function handleSubmit(e, sheet) {
   e.preventDefault();
   const form = e.target; // The form element
-  const name = form.name.value.trim(); // Assuming your input has name="name"
-  const phone = form.phone.value.trim(); // Assuming your input has name="phone"
+  const name = form.name.value.trim(); 
+  const phone = form.phone.value.trim();
+  const email = form.email.value.trim(); // 👈 هنا أضفنا الإيميل
+
   if (form.project) {
-      const project = form.project.value.trim(); // Assuming your input has name="phone"
-      if (project != "none") {
-          sheet = project;
-      }else{
-          console.log("none");
-          
-      }
-  }else{
-      console.log("errorall");
-      
+    const project = form.project.value.trim(); 
+    if (project != "none") {
+      sheet = project;
+    } else {
+      console.log("none");
+    }
+  } else {
+    console.log("errorall");
   }
-  // // Validate inputs
-  if (!name || !phone) {
-    showAlert("الرجاء إدخال الاسم ورقم الهاتف.", "warning");
+
+  // ✅ Validate inputs
+  if (!name || !phone || !email) {
+    showAlert("الرجاء إدخال الاسم ورقم الهاتف والبريد الإلكتروني.", "warning");
     return;
   }
-  console.log(name, phone,sheet);
-  
+
+  // ✅ Simple email format check
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) {
+    showAlert("الرجاء إدخال بريد إلكتروني صالح.", "warning");
+    return;
+  }
+
+  console.log(name, phone, email, sheet);
+
   // Show progress bar
   const progressContainer = document.getElementById("preloader");
   progressContainer.classList.remove("d-none");
@@ -58,31 +67,31 @@ async function handleSubmit(e, sheet) {
       body: new URLSearchParams({
         name: name,
         phone: phone,
+        email: email, // 👈 أرسل الإيميل كمان
         compound: sheet
       })
     });
 
     const result = await response.json();
     if (result.success) {
-      name.value = "";
-      phone.value = "";
-        window.location.href = 'thank_you.html';
-    preloader.classList.add('hidden');
-
+      form.name.value = "";
+      form.phone.value = "";
+      form.email.value = ""; // 👈 امسح الإيميل بعد الإرسال
+      window.location.href = 'thank_you.html';
     } else {
       throw new Error(result.error || "Submission failed");
-        preloader.classList.add('hidden');
-
+      progressContainer.classList.add('hidden');
     }
   } catch (error) {
     console.error("Error:", error);
-    preloader.classList.add('hidden');
+    progressContainer.classList.add('hidden');
     showAlert("حدث خطأ، برجاء المحاولة مرة أخرى.", "danger");
   } finally {
     progressContainer.classList.add("d-none");
-    preloader.classList.add('hidden');
+    progressContainer.classList.add('hidden');
   }
 }
+
 function showAlert(message, type) {
   const alertContainer = document.getElementById("alertContainer");
 
@@ -182,14 +191,12 @@ function showAlert(message, type) {
   /**
    * Preloader
    */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.classList.add('d-none');
-    });
-  }
+const preloader = document.querySelector('#preloader');
+if (preloader) {
+  window.addEventListener('load', () => {
+    preloader.classList.add('d-none');
+  });
 }
-
   /**
    * Scroll top button
    */
